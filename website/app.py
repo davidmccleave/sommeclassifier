@@ -18,12 +18,12 @@ classifier = get_trained_classifier()
 print('done!')
 
 class Form(FlaskForm):
-    style = {'class': "place-items-center; bg-stone-800; border-2; border-gray-200; rounded; shadow;"}
+    style = {'class': "place-items-center border-2 border-gray-300 rounded-lg p-2 font-sans w-3/4 md:w-1/2"}
     description = StringField('Description', render_kw=style)
     submit = SubmitField('Enquire')
 
 @app.route('/', methods=['GET', 'POST'])
-def idnex():
+def index():
     form = Form()
     if request.method == 'POST':
         description = form.description.data
