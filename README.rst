@@ -21,6 +21,7 @@ How to run locally:
 -------------------
 
 1. Clone the repository.
-2. `cd` into the ``website/`` directory.
-3. Execute ``flask run`` from the command-line.
-4. Visit the shown local address (typically, ``http://127.0.0.1:5000``) where the site will be hosted locally.
+2. Install the necessary dependencies in ``requirements.txt``. (``pip install -r requirements.txt``)
+3. `cd` into the ``website/`` directory.
+4. Execute ``flask run`` from the command-line.
+5. Visit the shown local address (typically, ``http://127.0.0.1:5000``) where the site will be hosted locally.
