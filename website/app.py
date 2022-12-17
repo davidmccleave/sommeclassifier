@@ -1,12 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, url_for, send_from_directory
 from wine_classifier import get_trained_classifier, return_recommendations
 from wtforms import StringField, SubmitField
 from flask_wtf import FlaskForm
 import resource
-import joblib
-
-def get_train_classifier():
-    return joblib.load('nb-classifier.joblib')
+import os
 
 def limit_memory(maxsize):
     soft, hard = resource.getrlimit(resource.RLIMIT_AS)
@@ -14,6 +11,7 @@ def limit_memory(maxsize):
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret_string"
+
 classifier = get_trained_classifier()
 print('done!')
 
