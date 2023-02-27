@@ -5,12 +5,17 @@ from flask_wtf import FlaskForm
 import resource
 import os
 
-def limit_memory(maxsize):
-    soft, hard = resource.getrlimit(resource.RLIMIT_AS)
-    resource.setrlimit(resource.RLIMIT_AS, (maxsize, hard))
-
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret_string"
+
+# Attempting to set resouce limits.
+
+# soft, hard = resource.getrlimit(resource.RLIMIT_AS)
+# soft = int(resource.RLIM_INFINITY / 200000000)
+# hard = int(resource.RLIM_INFINITY / 200000000)
+# print(f'soft: {soft}')
+# print(f'hard: {hard}')
+# resource.setrlimit(resource.RLIMIT_AS, (-1, -1))
 
 classifier = get_trained_classifier()
 print('done!')
@@ -32,5 +37,4 @@ def index():
     return render_template('classify.html', form=form, first='', second='', third='')
 
 if __name__ == '__main__':
-    # limit_memory()
     app.run(debug=True)
